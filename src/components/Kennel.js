@@ -4,6 +4,8 @@ import { LocationList } from "./location/LocationList"
 import "./Kennel"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
+import { AnimalProvider } from "./animal/AnimalProvider"
+import { AnimalList } from "./animal/AnimalList"
 
 export const Kennel = () => (
     <>
@@ -14,6 +16,11 @@ export const Kennel = () => (
         <LocationProvider>
             <LocationList/>
         </LocationProvider>
+
+        <h2>Animals</h2>
+        <AnimalProvider>
+            <AnimalList/>
+        </AnimalProvider>
 
         <h2>Employees</h2>
         <EmployeeProvider>

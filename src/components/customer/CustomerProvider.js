@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 export const CustomerContext = React.createContext()
 
@@ -21,6 +21,14 @@ export const CustomerProvider = (props) => {
         })
         .then(getCustomers)
     }
+
+    useEffect(() => {
+        getCustomers()
+    }, [])
+
+    useEffect(() => {
+    }, [customers])
+
 
     return (
         <CustomerContext.Provider value={{

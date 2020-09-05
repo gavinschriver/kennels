@@ -22,12 +22,12 @@ export const CustomerProvider = (props) => {
         .then(getCustomers)
     }
 
-    useEffect(() => {
-        getCustomers()
-    }, [])
+    // useEffect(() => {
+    //     getCustomers()
+    // }, [])
 
-    useEffect(() => {
-    }, [customers])
+    // useEffect(() => {
+    // }, [customers])
 
 
     return (

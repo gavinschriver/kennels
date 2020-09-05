@@ -6,7 +6,7 @@ export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([])
     
     const getEmployees = () => {
-        return fetch("http://localhost:8088/employees?_expand=location")
+        return fetch("http://localhost:8088/employees")
             .then(res => res.json())
             .then(setEmployees)
     }
@@ -14,13 +14,14 @@ export const EmployeeProvider = (props) => {
     const addEmployee = employee => {
         return fetch("http://localhost:8088/employees", {
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(employee)
         })
         .then(getEmployees)
     }
+
 
     return (
         <EmployeeContext.Provider value={{ employees, addEmployee, getEmployees }}>

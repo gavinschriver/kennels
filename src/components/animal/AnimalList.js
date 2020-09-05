@@ -1,14 +1,18 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { AnimalContext } from "./AnimalProvider"
 import { Animal } from "./Animal"
 import "./Animals.css"
-import { LocationProvider, LocationContext } from "../location/LocationProvider"
+import { LocationContext } from "../location/LocationProvider"
 import { CustomerContext } from "../customer/CustomerProvider"
 
 export const AnimalList = () => {
     const { animals } = useContext(AnimalContext)
     const { locations } = useContext(LocationContext)
-    const { customers } = useContext(CustomerContext)
+    const { customers, getCustomers } = useContext(CustomerContext)
+
+    useEffect(() => {
+        getCustomers()
+    }, [])
 
     return (
         <div className="animals">

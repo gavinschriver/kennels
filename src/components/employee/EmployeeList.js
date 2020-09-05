@@ -1,27 +1,28 @@
-import React, { useContext, useEffect } from "react"
-import { EmployeeContext } from "./EmployeeProvider"
-import "./Employees.css"
+import React, { useContext, useEffect } from "react";
+import { EmployeeContext } from "./EmployeeProvider";
+import { Employee } from "./Employee";
+import "./Employees.css";
 
-export const EmployeeList = () => {
- 
-    const { employees, getEmployees } = useContext(EmployeeContext)
+export const EmployeeList = (propertiesObj) => {
+  const { employees, getEmployees } = useContext(EmployeeContext);
 
-    useEffect(() => {
-        getEmployees()
-    }, [])
+  useEffect(() => {
+    getEmployees();
+  }, []);
 
-    useEffect(() => {
-    }, [employees])
+  useEffect(() => {}, [employees]);
 
-    return (
-        <article className="employees">
-            {
-                employees.map(eo => {
-                    return <section key={eo.id} className="employee">
-                        <div><h3>{eo.name}</h3></div>
-                        <div>{eo.locationId}</div>
-                </section>})
-            }
-        </article>
-    )
-}
+  return (
+    <div className="employees">
+      <article className="employees">
+        <h1>Employees</h1>
+        <button onClick={() => propertiesObj.history.push("/employees/create")}>
+          Add Employee
+        </button>
+        {employees.map((eo) => (
+          <Employee key={eo.id} employeeObj={eo} />
+        ))}
+      </article>
+    </div>
+  );
+};

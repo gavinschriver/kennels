@@ -14,7 +14,7 @@ export const EmployeeForm = (props) => {
   const employeeAnimal = useRef(0);
   const constructNewEmployee = () => {
     const locationId = parseInt(employeeLocation.current.value);
-    const animalId = parseInt(employeeAnimal.current.value)
+    const animalId = parseInt(employeeAnimal.current.value);
 
     if (locationId === 0) {
       window.alert("Please choose a location");
@@ -22,7 +22,7 @@ export const EmployeeForm = (props) => {
       addEmployee({
         name: employeeName.current.value,
         locationId,
-        animalId
+        animalId,
       }).then(() => {
         props.history.push("/employees");
       });

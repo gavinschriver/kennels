@@ -10,21 +10,62 @@ import { EmployeeList } from "./employee/EmployeeList";
 import { CustomerList } from "./customer/CustomerList";
 import { EmployeeForm } from "./employee/EmployeeForm";
 import { AnimalForm } from "./animal/AnimalForm";
+import { AnimalDetail } from "./animal/AnimalDetail";
+import { EmployeeDetail } from "./employee/EmployeeDetail";
+import { LocationDetail } from "./location/LocationDetail";
+import { AnimalSearch } from "./animal/AnimalSearch";
 
 export const ApplicationViews = (props) => {
   return (
     <>
       <LocationProvider>
-        <Route exact path="/">
-          <LocationList />
-        </Route>
+        <EmployeeProvider>
+          <AnimalProvider>
+            <Route exact path="/">
+              <LocationList />
+            </Route>
+            <Route
+              path="/locations/:locationId(\d+)"
+              render={(props) => <LocationDetail {...props} />}
+            />
+          </AnimalProvider>
+        </EmployeeProvider>
       </LocationProvider>
+
+      <EmployeeProvider>
+        <Route
+          exact
+          path="/employees"
+          render={() => <EmployeeList {...props} />}
+        ></Route>
+      </EmployeeProvider>
 
       <AnimalProvider>
         <CustomerProvider>
           <LocationProvider>
-            <Route exact path="/animals" render={(props) => <AnimalList {...props}/>}></Route> 
-            <Route exact path="/animals/create" render={(props) => <AnimalForm {...props} />}></Route>
+            <EmployeeProvider>
+              <Route
+                path="/animals/:animalId(\d+)"
+                render={(props) => <AnimalDetail {...props} />}
+              />
+              <Route
+                exact
+                path="/animals"
+                render={(props) => {
+                  return (
+                    <>
+                      <AnimalSearch />
+                      <AnimalList {...props} />
+                    </>
+                  );
+                }}
+              />
+
+              <Route
+                path="/animals/create"
+                render={(props) => <AnimalForm {...props} />}
+              ></Route>
+            </EmployeeProvider>
           </LocationProvider>
         </CustomerProvider>
       </AnimalProvider>
@@ -32,14 +73,15 @@ export const ApplicationViews = (props) => {
       <EmployeeProvider>
         <LocationProvider>
           <AnimalProvider>
-          <Route
-            exact
-            path="/employees"
-            render={(propertiesObj) => <EmployeeList {...propertiesObj} />}
-          ></Route>
-          <Route exact path="/employees/create" render={(propies) => <EmployeeForm {...propies} /> }>
-            </Route>
-            </AnimalProvider>
+            <Route
+              path="/employees/create"
+              render={(props) => <EmployeeForm {...props} />}
+            />
+            <Route
+              path="/employees/:employeeId(\d+)"
+              render={(props) => <EmployeeDetail {...props} />}
+            />
+          </AnimalProvider>
         </LocationProvider>
       </EmployeeProvider>
 
@@ -48,6 +90,14 @@ export const ApplicationViews = (props) => {
           <CustomerList />
         </Route>
       </CustomerProvider>
+
+      <Route
+        path="/logout"
+        render={(props) => {
+          localStorage.removeItem("kennel_customer");
+          props.history.push("/login");
+        }}
+      ></Route>
     </>
   );
 };

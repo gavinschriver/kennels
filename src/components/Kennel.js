@@ -26,3 +26,4 @@ export const Kennel = () => (
     <Route path="/register" render={(props) => <Register {...props} />} />
   </>
 );
+  

@@ -20,8 +20,9 @@ export const AnimalDetail = (props) => {
             <div className="animal__location">Location: {animal.location.name}</div>
             <div className="animal__owner">Customer: {animal.customer.name}</div>
             <button onClick={
-                () => {
-                    releaseAnimal(animal)
+          () => {
+                    const animalId = animal.id
+                    releaseAnimal(animalId)
                         .then(() => {
                             props.history.push("/animals")
                         })

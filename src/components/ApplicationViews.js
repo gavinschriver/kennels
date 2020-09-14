@@ -45,10 +45,6 @@ export const ApplicationViews = (props) => {
           <LocationProvider>
             <EmployeeProvider>
               <Route
-                path="/animals/:animalId(\d+)"
-                render={(props) => <AnimalDetail {...props} />}
-              />
-              <Route
                 exact
                 path="/animals"
                 render={(props) => {
@@ -64,7 +60,20 @@ export const ApplicationViews = (props) => {
               <Route
                 path="/animals/create"
                 render={(props) => <AnimalForm {...props} />}
-              ></Route>
+              />
+              <Route
+                path="/animals/:animalId(\d+)"
+                render={(props) => <AnimalDetail {...props} />}
+              />
+              <Route
+                path="/animals/edit/:animalId(\d+)"
+                render={
+                  (props) => {
+                    alert('render time!')
+                    return <AnimalForm {...props} />
+                  }
+                }
+              />
             </EmployeeProvider>
           </LocationProvider>
         </CustomerProvider>

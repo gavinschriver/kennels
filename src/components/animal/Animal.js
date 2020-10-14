@@ -7,6 +7,7 @@ export const Animal = ({ animal }) => {
     const { releaseAnimal } = useContext(AnimalContext)
     
     return (<section className="animal">
+
         <h3 className="animal__name">
             <Link to={`/animals/${animal.id}`}>
                 {animal.name}

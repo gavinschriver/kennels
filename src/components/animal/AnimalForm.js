@@ -43,6 +43,7 @@ export const AnimalForm = (props) => {
       const animalId = parseInt(props.match.params.animalId);
       const selectedAnimal = animals.find((a) => a.id === animalId) || {};
       setAnimal(selectedAnimal);
+      console.log(selectedAnimal)
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 
 export const AnimalContext = React.createContext();
 
@@ -9,7 +9,7 @@ export const AnimalProvider = (props) => {
 
   const getAnimals = () => {
     return fetch(
-      "http://localhost:8088/animals?_expand=customer&_expand=location"
+      "http://localhost:8088/animals"
     )
       .then((res) => res.json())
       .then(setAnimals);
@@ -17,7 +17,7 @@ export const AnimalProvider = (props) => {
 
   const getAnimalById = (id) => {
     return fetch(
-      `http://localhost:8088/animals/${id}?_expand=location&_expand=customer`
+      `http://localhost:8088/animals/${id}`
     ).then((res) => res.json());
   };
 

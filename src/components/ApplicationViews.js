@@ -36,7 +36,7 @@ export const ApplicationViews = (props) => {
         <Route
           exact
           path="/employees"
-          render={() => <EmployeeList {...props} />}
+          render={() => <EmployeeList/>}
         ></Route>
       </EmployeeProvider>
 
@@ -50,11 +50,16 @@ export const ApplicationViews = (props) => {
                 render={(props) => {
                   return (
                     <>
-                      <AnimalSearch />
+                      <AnimalSearch/>
                       <AnimalList {...props} />
+                
                     </>
                   );
                 }}
+              />
+              <Route
+                path="/animals/:animalId(\d+)"
+                render={(props) => <AnimalDetail {...props} />}
               />
 
               <Route
@@ -62,17 +67,8 @@ export const ApplicationViews = (props) => {
                 render={(props) => <AnimalForm {...props} />}
               />
               <Route
-                path="/animals/:animalId(\d+)"
-                render={(props) => <AnimalDetail {...props} />}
-              />
-              <Route
                 path="/animals/edit/:animalId(\d+)"
-                render={
-                  (props) => {
-                    alert('render time!')
-                    return <AnimalForm {...props} />
-                  }
-                }
+                render={(props) => <AnimalForm {...props} />}
               />
             </EmployeeProvider>
           </LocationProvider>

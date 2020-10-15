@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 
 export const CustomerContext = React.createContext()
 
@@ -6,7 +6,7 @@ export const CustomerProvider = (props) => {
     const [customers, setCustomers] = useState([])
 
     const getCustomers = () => {
-        return fetch("http://localhost:8088/customers?_embed=animals")
+        return fetch("http://localhost:8088/customers")
             .then(res => res.json())
             .then(setCustomers)
     }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Locations.css";
-import Iframe from "react-iframe";
 
 export const LocationDetail = (props) => {
   return (
@@ -17,16 +16,6 @@ export const LocationDetail = (props) => {
           .map((e) => e.name)
           .join(", ")}
       </div>
-
-      <Iframe
-        url="https://www.youtube.com/embed/b6EK2KRvuJY"
-        width="450px"
-        height="450px"
-        id="myId"
-        className="myClassname"
-        display="initial"
-        position="relative"
-      />
 
       <div>
         <h4>Current Residents</h4>

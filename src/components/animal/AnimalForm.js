@@ -76,7 +76,7 @@ export const AnimalForm = (props) => {
         updateAnimal({
           id: animal.id,
           name: animal.name,
-          breed: animal.breed,
+          breed: animal.species,
           locationId: locationId,
           treatment: animal.treatment,
           customerId: parseInt(localStorage.getItem("kennel_customer")),
@@ -139,7 +139,7 @@ export const AnimalForm = (props) => {
               name="locationId"
               className="form-control"
               proptype="int"
-              value={animal.locationId}
+              value={animal.location}
               onChange={handleControlledInputChange}
             >
               <option value="0">Select a location</option>

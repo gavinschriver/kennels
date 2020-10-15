@@ -20,8 +20,8 @@ export const LocationList = () => {
       {locations.map((location) => {
 
         location.employees = employees.filter((e) => e.location_id === location.id);
-
-        location.animals = animals.filter((a) => a.location_id === location.id);
+          //weird tricky thing - here, since we're getting_all_animals, 'location' gets defined on the object instance as the location id; but in get_single (used in details) its the name itself
+        location.animals = animals.filter((a) => a.location === location.id);
 
         return (
           <article
